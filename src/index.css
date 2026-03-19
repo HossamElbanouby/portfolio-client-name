@@ -1,0 +1,147 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0A1B;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== Scrollbar ===== */
+
+/* Chrome, Edge, Safari, Opera */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A1B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6C3CE1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7c4dff;
+}
+
+/* Firefox */
+@supports (scrollbar-width: thin) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #6C3CE1 #0A0A1B;
+  }
+}
+
+/* ===== Selection ===== */
+::-moz-selection {
+  background: rgba(108, 60, 225, 0.4);
+  color: #ffffff;
+}
+
+::selection {
+  background: rgba(108, 60, 225, 0.4);
+  color: #ffffff;
+}
+
+/* ===== Custom Utility Classes ===== */
+@layer utilities {
+  .text-gradient {
+    /* الترتيب الصح: -webkit أولاً بعدين العادي */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    background-image: linear-gradient(to right, #6C3CE1, #00D9FF, #6C3CE1);
+    background-size: 200% auto;
+    animation: gradient 4s ease infinite;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-hover {
+    transition: all 0.5s ease;
+  }
+
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .glow-border {
+    -webkit-box-shadow: 0 0 0 1px rgba(108, 60, 225, 0.3),
+                        0 0 20px rgba(108, 60, 225, 0.1);
+    box-shadow: 0 0 0 1px rgba(108, 60, 225, 0.3),
+                0 0 20px rgba(108, 60, 225, 0.1);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5),
+                 0 0 20px rgba(0, 217, 255, 0.3),
+                 0 0 40px rgba(0, 217, 255, 0.1);
+  }
+}
+
+/* ===== Keyframes ===== */
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  50% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    -webkit-box-shadow: 0 0 20px rgba(108, 60, 225, 0.3);
+    box-shadow: 0 0 20px rgba(108, 60, 225, 0.3);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 40px rgba(108, 60, 225, 0.6);
+    box-shadow: 0 0 40px rgba(108, 60, 225, 0.6);
+  }
+}
+
+/* ===== Background Patterns ===== */
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(108, 60, 225, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 60, 225, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(108, 60, 225, 0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
